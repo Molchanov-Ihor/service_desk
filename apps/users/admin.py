@@ -1,10 +1,9 @@
 from django.contrib import admin
-from django.contrib.auth.models import User
 
-from apps.users.models import Position
+from apps.users.models import Position, CustomUser
 
 
-@admin.register(User)
+@admin.register(CustomUser)
 class UserAdmin(admin.ModelAdmin):
     list_display = ('username', 'email', 'position', 'is_active')
     search_fields = ('username', 'email', 'position')

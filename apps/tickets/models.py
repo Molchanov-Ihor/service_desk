@@ -39,3 +39,11 @@ class Ticket(models.Model):
         related_name='status',
         verbose_name='Статус'
     )
+
+    class Meta:
+        verbose_name = 'Тікет'
+        verbose_name_plural = 'Тікети'
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.title

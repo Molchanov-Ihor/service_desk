@@ -1,4 +1,5 @@
-from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
+from django.contrib.auth.base_user import BaseUserManager
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
@@ -34,13 +35,13 @@ class CustomManager(BaseUserManager):
         return self.create_user(username, password, **extra_fields)
 
 
-class CustomUser(AbstractBaseUser):
+class CustomUser(AbstractUser):
     first_name = None
     last_name = None
 
     username = models.CharField(max_length=32, unique=True, verbose_name='Логін')
     name = models.CharField(max_length=64, verbose_name='ПІБ користувача')
-    email = models.EmailField(max_length=255, unique=True, verbose_name='ПІБ користувача')
+    email = models.EmailField(max_length=255, unique=True, verbose_name='Пошта')
     position = models.ForeignKey(Position, on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Посада')
     is_active = models.BooleanField(default=True, verbose_name='Активний обліковий запис')
 
@@ -48,3 +49,11 @@ class CustomUser(AbstractBaseUser):
     USERNAME_FIELD = 'username'
 
     objects = CustomManager()
+
+    class Meta:
+        verbose_name = 'Користувач'
+        verbose_name_plural = 'Користувачі'
+        ordering = ('username',)
+
+    def __str__(self):
+        return self.username

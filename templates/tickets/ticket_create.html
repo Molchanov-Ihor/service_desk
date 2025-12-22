@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Створення тікету</h4>
+            <form method="POST">
+                {% csrf_token %}
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    {{ form.errors }}
+                </div>
+                {% endif %}
+                <div class="form-body">
+                    <label class="form-label">Назва тікету </label>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                {{ form.title }}
+                            </div>
+                        </div>
+                    </div>
+                    <label class="form-label">Опис тікету </label>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group mb-3">
+                                {{ form.description }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Створити</button>
+                        <a href="{% url 'tickets:tickets-list' %}" type="reset" class="btn btn-dark">Скасувати</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
