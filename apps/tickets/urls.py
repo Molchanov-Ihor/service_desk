@@ -8,4 +8,5 @@ urlpatterns = [
     path('create/', views.TicketCreateView.as_view(), name='create-ticket'),
     path('<int:pk>/', views.TicketDetailView.as_view(), name='ticket-detail'),
     path('edit/<int:pk>/', views.TicketUpdateView.as_view(), name='ticket-update'),
+    path('delete/<int:pk>/', views.TicketDeleteView.as_view(), name='ticket-delete'),
 ]

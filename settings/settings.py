@@ -56,10 +56,21 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'service_desk',
+        'USER': 'postgres',
+        'PASSWORD': 'Qwerty123',
+        'HOST': 'localhost',
+        'PORT': '5433',
     }
 }
 

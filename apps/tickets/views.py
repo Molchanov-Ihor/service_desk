@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from apps.tickets.forms import TicketCreateForm, TicketUpdateForm
 from apps.tickets.models import Ticket
@@ -34,3 +34,10 @@ class TicketUpdateView(UpdateView):
     form_class = TicketUpdateForm
     template_name = 'tickets/ticket_update.html'
     success_url = reverse_lazy('tickets:tickets-list')
+
+
+class TicketDeleteView(DeleteView):
+    model = Ticket
+    context_object_name = 'ticket'
+    success_url = reverse_lazy('tickets:tickets-list')
+
