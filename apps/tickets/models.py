@@ -16,15 +16,17 @@ class Status(models.Model):
 class Ticket(models.Model):
     title = models.CharField(max_length=100, verbose_name='Назва тікету')
     description = models.TextField(verbose_name='Опис тікету')
-    author_id = models.ForeignKey(
+    author = models.ForeignKey(
         to=settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         verbose_name='Ініціатор',
         related_name='author'
     )
-    executor_id = models.ForeignKey(
+    executor = models.ForeignKey(
         to=settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
         verbose_name='Виковавець',
         related_name='executor'
     )
