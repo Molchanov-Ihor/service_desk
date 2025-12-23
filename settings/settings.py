@@ -11,7 +11,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['service-desk-django.onrender.com']
+ALLOWED_HOSTS = ['service-desk-django.onrender.com', 'localhost']
 CSRF_TRUSTED_ORIGINS = [
     'https://service-desk-django.onrender.com',
 ]
