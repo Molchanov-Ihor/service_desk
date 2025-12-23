@@ -10,7 +10,6 @@ class TicketListView(ListView):
     model = Ticket
     context_object_name = 'tickets'
     template_name = 'tickets.html'
-    paginate_by = 30
 
 
 class TicketDetailView(DetailView):
