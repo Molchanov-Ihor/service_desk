@@ -29,6 +29,10 @@ class TicketCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def get_queryset(self):
+        queryset = Ticket.objects.select_related('author', 'executor', 'status')
+        return queryset
+
 
 class TicketUpdateView(UpdateView):
     model = Ticket
