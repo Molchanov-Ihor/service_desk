@@ -27,9 +27,6 @@ def user_login(request):
 
 
 def user_logout(request):
-    if request.user.is_authenticated:
-        messages.success(request, 'Ви успішно розлогінились !')
-
     logout(request)
     return redirect('users:login')
 
