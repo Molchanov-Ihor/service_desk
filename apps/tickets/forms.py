@@ -1,6 +1,6 @@
 from django import forms
 
-from apps.tickets.models import Ticket
+from apps.tickets.models import Ticket, Status
 
 
 class TicketCreateForm(forms.ModelForm):
@@ -16,6 +16,7 @@ class TicketCreateForm(forms.ModelForm):
             'title': 'Назва тікету',
             'description': 'Опис',
         }
+
 
 class TicketUpdateForm(forms.ModelForm):
     class Meta:
@@ -35,4 +36,17 @@ class TicketUpdateForm(forms.ModelForm):
             'author': 'Автор',
             'executor': 'Виконувач',
             'status': 'Статус',
+        }
+
+
+class StatusForm(forms.ModelForm):
+    class Meta:
+        model = Status
+        fields = '__all__'
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+        labels = {
+            'name': 'Назва статусу'
         }
