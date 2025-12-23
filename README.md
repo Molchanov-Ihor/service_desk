@@ -30,3 +30,13 @@ For starting project use command:
 when service up, you can open project in browser with your ip `http://your-ip/`
 
 
+## Credentials:
+site: https://service-desk-django.onrender.com
+
+### admin:
+login: admin
+password: Qwerty123
+
+### DevOps:
+login: Devops-user
+password: Qwerty123
