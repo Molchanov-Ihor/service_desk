@@ -66,11 +66,11 @@ AUTH_USER_MODEL = 'users.CustomUser'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'service_desk',
-        'USER': 'postgres',
-        'PASSWORD': 'Qwerty123',
-        'HOST': 'localhost',
-        'PORT': '5433',
+        'NAME': os.getenv("DB_NAME"),
+        'USER': os.getenv("DB_USER"),
+        'PASSWORD': os.getenv("DB_PASSWORD"),
+        'HOST': os.getenv("DB_HOST"),
+        'PORT': os.getenv("DB_PORT"),
     }
 }
 
