@@ -2,6 +2,9 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
+from apps.users.forms import UserForm
+from apps.users.models import Position
+
 
 def user_login(request):
     context = {}
@@ -29,3 +32,20 @@ def user_logout(request):
 
     logout(request)
     return redirect('users:login')
+
+
+def user_registration(request):
+    if request.user.is_authenticated:
+        return redirect('tickets:tickets-list')
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.position = Position.objects.filter(id=1).first()
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            login(request, user)
+            return redirect('tickets:tickets-list')
+    else:
+        form = UserForm()
+    return render(request, 'registration/register.html', {'form': form})

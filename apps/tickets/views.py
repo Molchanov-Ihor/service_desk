@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -18,7 +19,7 @@ class TicketDetailView(DetailView):
     template_name = 'ticket_detail.html'
 
 
-class TicketCreateView(CreateView):
+class TicketCreateView(LoginRequiredMixin, CreateView):
     model = Ticket
     form_class = TicketCreateForm
     template_name = 'tickets/ticket_create.html'
