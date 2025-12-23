@@ -27,6 +27,7 @@ class TicketCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        form.instance.status = Status.objects.get(pk=1)
         return super().form_valid(form)
 
     def get_queryset(self):
