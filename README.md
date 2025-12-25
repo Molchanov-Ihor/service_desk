@@ -13,8 +13,8 @@ This application using for manage task-related services
 This is custom users models for manage django user
 
 ## 🛠 Tech Stack
-- Python 3.10 +
-- Django 4.2 +
+* Python 3.10 +
+* Django 4.2 +
 
 ## 📦 Installation
 ```bash
@@ -50,3 +50,23 @@ when service up, you can open project in browser with your ip `http://your-ip/`
 ### DevOps:
  * **Login:** Devops-user
  * **Password:** Qwerty123
+
+## DB STRUCTURE
+
+![screenshot](demo/db_structure.png)
+
+## images of site pages
+### Main page
+![screenshot](demo/main_page.png)
+### Login page
+![screenshot](demo/login_page.png)
+### Registration page
+![screenshot](demo/registration_page.png)
+### Registration page
+![screenshot](demo/registration_page.png)
+### Create ticket page
+![screenshot](demo/create_ticket_page.png)
+### Edit ticket page
+![screenshot](demo/edit_ticket_page.png)
+### Delete ticket page
+![screenshot](demo/delete_ticket_page.png)
