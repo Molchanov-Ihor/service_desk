@@ -22,21 +22,30 @@ git clone https://github.com/Molchanov-Ihor/service_desk.git
 cd repo
 ```
 
+### Create venv
+`python -m venv venv`
 
-## For starting web:
+### Activate venv
+`venv\script\activate`
+
+### install requiremetns
+`pip install -r requirements.txt`
+
+### For starting web:
 For starting project use command:
-`py manage.py runserver 0.0.0.0:80`
+
+`python manage.py runserver 0.0.0.0:80`
 
 when service up, you can open project in browser with your ip `http://your-ip/`
 
 
 ## Credentials:
-site: https://service-desk-django.onrender.com
+* **site:** https://service-desk-django.onrender.com
 
-### admin:
-login: admin
-password: Qwerty123
+### Admin:
+ * **Login:** admin
+ * **Password:** Qwerty123
 
 ### DevOps:
-login: Devops-user
-password: Qwerty123
+ * **Login:** Devops-user
+ * **Password:** Qwerty123
