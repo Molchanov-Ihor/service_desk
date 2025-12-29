@@ -17,7 +17,6 @@ class TicketListView(LoginRequiredMixin, ListView):
             queryset = Ticket.objects.filter(author=self.request.user).select_related('author', 'executor', 'status')
         else:
             queryset = Ticket.objects.all().select_related('executor', 'status')
-        print(queryset)
         return queryset
 
 
