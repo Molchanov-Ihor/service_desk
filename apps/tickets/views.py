@@ -6,13 +6,22 @@ from apps.tickets.forms import TicketCreateForm, TicketUpdateForm, StatusForm
 from apps.tickets.models import Ticket, Status
 
 
-class TicketListView(ListView):
+class TicketListView(LoginRequiredMixin, ListView):
     model = Ticket
     context_object_name = 'tickets'
     template_name = 'tickets.html'
 
+    def get_queryset(self):
 
-class TicketDetailView(DetailView):
+        if self.request.user.position.id == 1:
+            queryset = Ticket.objects.filter(author=self.request.user).select_related('author', 'executor', 'status')
+        else:
+            queryset = Ticket.objects.all().select_related('executor', 'status')
+        print(queryset)
+        return queryset
+
+
+class TicketDetailView(LoginRequiredMixin, DetailView):
     model = Ticket
     context_object_name = 'ticket'
     template_name = 'ticket_detail.html'
@@ -34,40 +43,40 @@ class TicketCreateView(LoginRequiredMixin, CreateView):
         return queryset
 
 
-class TicketUpdateView(UpdateView):
+class TicketUpdateView(LoginRequiredMixin, UpdateView):
     model = Ticket
     form_class = TicketUpdateForm
     template_name = 'tickets/ticket_update.html'
     success_url = reverse_lazy('tickets:tickets-list')
 
 
-class TicketDeleteView(DeleteView):
+class TicketDeleteView(LoginRequiredMixin, DeleteView):
     model = Ticket
     context_object_name = 'ticket'
     success_url = reverse_lazy('tickets:tickets-list')
 
 
-class StatusListView(ListView):
+class StatusListView(LoginRequiredMixin, ListView):
     model = Status
     context_object_name = 'statuses'
     template_name = 'status/statuses_list.html'
 
 
-class StatusCreateView(CreateView):
+class StatusCreateView(LoginRequiredMixin, CreateView):
     model = Status
     form_class = StatusForm
     template_name = 'status/status_form.html'
     success_url = reverse_lazy('tickets:statuses-list')
 
 
-class StatusUpdateView(UpdateView):
+class StatusUpdateView(LoginRequiredMixin, UpdateView):
     model = Status
     form_class = StatusForm
     template_name = 'status/status_form.html'
     success_url = reverse_lazy('tickets:statuses-list')
 
 
-class StatusDeleteView(DeleteView):
+class StatusDeleteView(LoginRequiredMixin, DeleteView):
     model = Status
     context_object_name = 'status'
     success_url = reverse_lazy('tickets:statuses-list')
